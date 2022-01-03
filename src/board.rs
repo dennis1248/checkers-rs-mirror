@@ -2,11 +2,11 @@
 const CELL_VALID: &str = "⬜";
 const CELL_INVALID: &str = "⬛";
 
-// Initialize the playfield, because hardcoding is stupid
-pub fn init() {
-    const ROWS: usize = 8;
-    const COLS: usize = 8;
+const ROWS: usize = 8;
+const COLS: usize = 8;
 
+// Initialize the playfield, because hardcoding is stupid
+pub fn init() -> [[&'static str; COLS]; ROWS] {
     let mut board = [["E"; COLS]; ROWS];
 
     {
@@ -35,6 +35,8 @@ pub fn init() {
             switch_row = !switch_row;
         }
     } 
+
+    board
 }
 
 // Flip booleans
