@@ -2,6 +2,7 @@
 const CELL_VALID: &str = "⬜";
 const CELL_INVALID: &str = "⬛";
 
+// Checkerboard size, default is 8x8
 const ROWS: usize = 8;
 const COLS: usize = 8;
 
@@ -39,10 +40,16 @@ pub fn init() -> [[&'static str; COLS]; ROWS] {
     board
 }
 
-pub fn generate(board_layout: &[[&str; COLS]; ROWS]) {
-    println!("{:?}", board_layout);
-}
+// Generate and return current state of board for display
+pub fn render(board_layout: &[[&str; COLS]; ROWS]) -> String {
+    let mut gen: String = "".to_string();
 
-pub fn print() {
-    
+    for y in 0..ROWS {
+        for x in 0..COLS {
+            gen = format!("{}{}", gen, board_layout[y][x]);
+        }
+        gen = format!("{}{}", gen, "\n")
+    }
+
+    gen
 }
