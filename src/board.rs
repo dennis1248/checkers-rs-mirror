@@ -12,8 +12,8 @@ pub fn init() -> [[&'static str; COLS]; ROWS] {
     {
         let mut switch_row: bool = false;   
         for y in 0..ROWS {
-        
             let mut switch_col: bool = false;
+
             for x in 0..COLS {
                 if switch_col {
                     if switch_row {
@@ -29,7 +29,7 @@ pub fn init() -> [[&'static str; COLS]; ROWS] {
                     }
                 }
 
-                switch_col = flip(switch_col);
+                switch_col = !switch_col;
             }
         
             switch_row = !switch_row;
@@ -39,11 +39,10 @@ pub fn init() -> [[&'static str; COLS]; ROWS] {
     board
 }
 
-// Flip booleans
-fn flip(var: bool) -> bool {
-    if var {
-        false
-    } else {
-        true
-    }
+pub fn generate(board_layout: &[[&str; COLS]; ROWS]) {
+    println!("{:?}", board_layout);
+}
+
+pub fn print() {
+    
 }
