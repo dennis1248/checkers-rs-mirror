@@ -1,8 +1,17 @@
 mod board;
+mod play;
+
 
 fn main() {
     let board_layout = board::init();
+    let board_rendered = board::render(&board_layout);
+    println!("{}", board_rendered);
 
-    let board_current_render = board::render(&board_layout);
-    println!("{}", board_current_render)
+    let gameboard = play::setup();
+
+    let gameboard_rendered = board::render(&gameboard);
+
+    println!("{}", gameboard_rendered);
 }
+
+
