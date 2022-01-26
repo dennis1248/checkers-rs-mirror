@@ -47,3 +47,9 @@ pub fn setup() -> [[&'static str; COLS]; ROWS]  {
 
     stones_location
 }
+
+// Check if player won
+// Purely for testing now
+pub fn check_for_win() -> bool {
+    true
+}

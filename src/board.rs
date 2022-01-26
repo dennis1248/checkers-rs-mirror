@@ -53,3 +53,25 @@ pub fn render(board_layout: &[[&str; COLS]; ROWS]) -> String {
 
     gen
 }
+
+// Combine board and stones location, return new board with stones placed
+pub fn combine<'a>(board_layout: &'a [[&str; COLS]; ROWS], stones_location: &'a [[&str; COLS]; ROWS]) -> [[&'a str; COLS]; ROWS] {
+    let mut combined: [[&str; COLS]; ROWS] = *board_layout;
+
+    // Define player pieces
+    let player_one = "🔴";
+    let player_two = "🔵";
+
+    for x in 0..COLS {
+        for y in 0..ROWS {
+            let stones_selector = stones_location[x][y].to_string();
+            if stones_selector == "X" {
+                combined[x][y] = player_one;
+            } else if stones_selector == "Y" {
+                combined[x][y] = player_two;
+            }
+        }
+    }
+
+    combined
+}
