@@ -29,10 +29,8 @@ pub fn init() -> [[&'static str; COLS]; ROWS] {
                         board[y][x] = CELL_VALID;
                     }
                 }
-
                 switch_col = !switch_col;
             }
-        
             switch_row = !switch_row;
         }
     } 
@@ -65,6 +63,7 @@ pub fn combine<'a>(board_layout: &'a [[&str; COLS]; ROWS], stones_location: &'a 
     for x in 0..COLS {
         for y in 0..ROWS {
             let stones_selector = stones_location[x][y].to_string();
+
             if stones_selector == "X" {
                 combined[x][y] = player_one;
             } else if stones_selector == "Y" {
