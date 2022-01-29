@@ -48,8 +48,40 @@ pub fn setup() -> [[&'static str; COLS]; ROWS]  {
     stones_location
 }
 
+// Count all stones currently on the board for both players and return count
+pub fn count_player_stones(stones_location: &[[&str; COLS]; ROWS]) -> [usize; 2] {
+    let mut player_one_counter: usize = 0;
+    let mut player_two_counter: usize = 0;
+
+    for x in 0..COLS {
+        for y in 0..ROWS {
+            if stones_location[x][y] == "X" {
+                player_one_counter = player_one_counter + 1;
+            } else if stones_location[x][y] == "Y" {
+                player_two_counter = player_two_counter + 1;
+            }
+        }
+    }
+   
+    [player_one_counter, player_two_counter]
+}
+
 // Check if player won
 // Purely for testing now
-pub fn check_for_win() -> bool {
-    true
+pub fn check_for_win(&player_stones_log: &[usize; 2]) -> [bool ;2] {
+    let win: bool;
+    let player: bool;
+
+    if &player_stones_log[0] <= &0 {
+        win = true;
+        player = false;
+    } else if &player_stones_log[1] <= &0 {
+        win = true;
+        player = true;
+    } else {
+        win = false;
+        player = false;
+    }
+
+    [win, player]
 }
