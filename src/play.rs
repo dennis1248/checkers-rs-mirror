@@ -1,3 +1,5 @@
+use std::io::stdin;
+
 // Checkerboard size, default is 8x8
 const ROWS: usize = 8;
 const COLS: usize = 8;
@@ -67,7 +69,7 @@ pub fn count_player_stones(stones_location: &[[&str; COLS]; ROWS]) -> [usize; 2]
 }
 
 // Check if player won
-// Purely for testing now
+// Returns bool to check if win state is reached and player name of winner
 pub fn check_for_win(&player_stones_log: &[usize; 2]) -> [bool ;2] {
     let win: bool;
     let player: bool;
@@ -84,4 +86,20 @@ pub fn check_for_win(&player_stones_log: &[usize; 2]) -> [bool ;2] {
     }
 
     [win, player]
+}
+
+// Take input from player moves and call relevant functions to execute moves
+pub fn player_move(player: &bool) {
+    let mut player_name: String;
+
+    if *player == true {
+        player_name = "one".to_string();        
+    } else {
+        player_name = "two".to_string();
+    }
+
+    println!("Player {} is now in play\n\nSelect a stone to move...", player_name);
+    
+    let mut player_stone_select = String::new();
+    stdin().read_line(&mut player_stone_select).unwrap();
 }
